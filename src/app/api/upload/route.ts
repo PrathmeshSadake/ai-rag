@@ -56,7 +56,9 @@ export async function POST(req: Request) {
 
     // Store in Pinecone with metadata
     const embeddings = new OpenAIEmbeddings({
-      openAIApiKey: process.env.OPENAI_API_KEY!,
+      apiKey: process.env.OPENAI_API_KEY, // In Node.js defaults to process.env.OPENAI_API_KEY
+      batchSize: 512, // Default value if omitted is 512. Max is 2048
+      model: "text-embedding-3-large",
     });
 
     const index = pinecone.Index(process.env.PINECONE_INDEX_NAME!);

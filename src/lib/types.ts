@@ -13,4 +13,5 @@ export interface ChatMessage {
   content: string;
   timestamp: Date;
   documentId: string;
+  image?: string;
 }
